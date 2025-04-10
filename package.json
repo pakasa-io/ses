@@ -1,4 +1,56 @@
 {
-  "name": "ses",
-  "packageManager": "yarn@4.9.0"
+  "name": "@pakasa/ses",
+  "version": "0.0.1",
+  "packageManager": "yarn@4.9.0",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "!dist/**/*.test.*"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "scripts": {
+    "test": "/bin/true || vitest",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage",
+    "prepare": "husky install",
+    "build": "node esbuild.config.js",
+    "verify": "node verify-package.js",
+    "prepublishOnly": "yarn build && yarn verify",
+    "dev": "node esbuild.config.js --watch",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch",
+    "size": "bundlesize",
+    "lint": "/bin/true || eslint --ext .js,.ts --cache --cache-strategy content .",
+    "lint-fix": "eslint --ext .js,.ts --fix .",
+    "prettier": "prettier --log-level warn --write --cache .",
+    "prettier-check": "prettier --log-level warn --check --cache ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "@eslint/json": "^0.11.0",
+    "@eslint/markdown": "^6.3.0",
+    "@nx/eslint": "20.7.2",
+    "@nx/vite": "20.7.2",
+    "@typescript-eslint/eslint-plugin": "^8.29.1",
+    "@typescript-eslint/parser": "^8.29.1",
+    "@vitest/coverage-v8": "^3.1.1",
+    "bundlesize": "^0.18.2",
+    "esbuild": "^0.25.2",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.6",
+    "globals": "^16.0.0",
+    "husky": "^8.0.0",
+    "nx": "20.7.2",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.29.1",
+    "vitest": "^3.1.1"
+  }
 }

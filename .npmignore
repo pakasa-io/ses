@@ -1,0 +1,12 @@
+# .npmignore
+src/
+test/
+scripts/
+*.config.*
+tsconfig.json
+.github/
+.husky/
+.eslint*
+.prettier*
+*.md
+*.log
