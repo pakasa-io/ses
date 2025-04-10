@@ -1,7 +1,7 @@
 {
   "name": "@pakasa/ses",
   "version": "0.0.1",
-  "packageManager": "yarn@4.9.0",
+  "--packageManager": "yarn@4.9.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
