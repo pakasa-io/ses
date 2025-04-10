@@ -15,6 +15,7 @@ jobs:
         with:
           node-version: 22
           cache: 'yarn'
+      - run: corepack enable
       - name: Setup Latest Yarn
         uses: threeal/setup-yarn-action@v2.0.0
         with:
@@ -34,6 +35,7 @@ jobs:
         with:
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
+      - run: corepack enable
       - name: Setup Latest Yarn
         uses: threeal/setup-yarn-action@v2.0.0
         with:
