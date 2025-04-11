@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ES6" ,         // Output ECMAScript version
-    "module": "CommonJS",
+    "target": "ESNext",
+    "module": "Node16",
     "esModuleInterop": true,
-    "declaration": false,
-    "declarationMap": false,
-    "sourceMap": false,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
     "outDir": "dist",
     "rootDir": "src",
     "strict": true,
-    "skipLibCheck": false,
+    "moduleResolution": "node16",
+    "skipLibCheck": true,
     "types": ["reflect-metadata"],
     "forceConsistentCasingInFileNames": true,
     "emitDecoratorMetadata": true,
