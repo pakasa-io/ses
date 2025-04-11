@@ -1,27 +1,23 @@
-// scripts/build.js
-const { build } = require('esbuild');
-const { execSync } = require('child_process');
+const {build} = require('esbuild');
+const {execSync} = require('child_process');
+const {tsconfigPathsPlugin} = require('esbuild-plugin-tsconfig-paths')
 
 // Generate type declarations
-execSync('tsc --emitDeclarationOnly');
+// execSync('tsc --emitDeclarationOnly');
 
 // Bundle with esbuild
 build({
-  entryPoints: ['src/index.ts'],
-  bundle: true,
-  minify: true,
-  sourcemap: true,
+  entryPoints: ['src/**/*.ts'],
+  bundle: false,
+  minify: false,
+  sourcemap: false,
   platform: 'node',
   format: 'cjs',
-  outfile: 'dist/index.js',
-}).catch(() => process.exit(1));
-
-build({
-  entryPoints: ['src/index.ts'],
-  bundle: true,
-  minify: true,
-  sourcemap: true,
-  platform: 'neutral',
-  format: 'esm',
-  outfile: 'dist/index.mjs',
+  outdir: 'dist',
+  target: ['es2020'],
+  plugins: [
+    tsconfigPathsPlugin( {
+      filter: /.*/,
+    })
+  ],
 }).catch(() => process.exit(1));
