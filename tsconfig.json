@@ -3,8 +3,8 @@
     "target": "ESNext",
     "module": "Node16",
     "esModuleInterop": true,
-    "declaration": true,
-    "declarationMap": true,
+    "declaration": false,
+    "declarationMap": false,
     "sourceMap": true,
     "outDir": "dist",
     "rootDir": "src",
@@ -15,6 +15,7 @@
     "forceConsistentCasingInFileNames": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
       "@/*": [
