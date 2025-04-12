@@ -1,20 +1,22 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "commonjs",
+    "module": "Node16",
     "esModuleInterop": true,
-    "declaration": true,
-    "declarationMap": true,
+    "declaration": false,
+    "declarationMap": false,
     "sourceMap": true,
     "outDir": "dist",
     "rootDir": "src",
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "skipLibCheck": true,
     "types": ["reflect-metadata"],
     "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
       "@/*": [

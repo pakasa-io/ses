@@ -1,5 +1,7 @@
 import {DI_CONFIG, injectable, inject} from "@/di";
 import {IConfig} from "config";
+import { BASE_DIR } from '@/constants';
+import path from 'path';
 
 @injectable()
 export class TemplateConfigs {
@@ -7,6 +9,6 @@ export class TemplateConfigs {
   }
 
   get baseDir(): string {
-    throw new Error("templates.assetsDir not implemented")
+    return path.resolve(BASE_DIR, 'templates')
   }
 }

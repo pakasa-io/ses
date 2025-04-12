@@ -7,7 +7,7 @@ import {TemplateEngineImpl, TemplateId} from "@/template-engine";
 import {CustomerRegisteredEventPayload} from "./event-payload.type";
 import {Logger} from "@/logger";
 
-export default async function handler(data: CustomerRegisteredEventPayload) {
+async function handler(data: CustomerRegisteredEventPayload) {
   const logger = resolve(Logger)
 
   try {
@@ -48,3 +48,6 @@ export default async function handler(data: CustomerRegisteredEventPayload) {
     logger.error(e);
   }
 };
+
+module.exports = handler
+export default handler

@@ -1,4 +1,4 @@
-import {ioc, DI_HBS, Handlebars, injectable, inject} from "@/di";
+import {DI_HBS, Handlebars, inject, injectable, ioc} from "@/di";
 
 import * as path from 'path';
 import * as fs from 'fs';

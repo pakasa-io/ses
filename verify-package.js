@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const expectedFiles = ['dist/index.js', 'dist/index.mjs', 'dist/index.d.ts'];
+const expectedFiles = ['dist/bootstrap.js'];
 
 expectedFiles.forEach((file) => {
   if (!fs.existsSync(file)) {

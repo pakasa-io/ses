@@ -2,7 +2,7 @@ import '@/di'
 import config from 'config';
 import {NAMESPACE} from "@/constants";
 
-export default () => {
+const fn = () => {
     const defaults = {
         from: 'Customer Service <no-reply@pakasa.io>',
         fromName: 'Pakasa',
@@ -23,3 +23,6 @@ export default () => {
     };
     config.util.setModuleDefaults(NAMESPACE, defaults);
 };
+
+module.exports = fn
+export default fn

@@ -8,7 +8,7 @@ import {Mailer} from "@/services/mailer";
 import {TemplateEngineImpl, TemplateId} from "@/template-engine";
 
 // eslint-disable-next-line no-unused-vars
-export default async (request: any, response: any, delegate: any, next: () => any) => {
+const handler =  async (request: any, response: any, delegate: any, next: () => any) => {
   const logger = resolve(Logger)
   try {
     const ccm = resolve(Ccm)
@@ -57,3 +57,6 @@ export default async (request: any, response: any, delegate: any, next: () => an
     });
   }
 };
+
+module.exports = handler
+export default handler

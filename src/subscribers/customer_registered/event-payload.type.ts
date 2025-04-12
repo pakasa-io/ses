@@ -47,6 +47,7 @@ export type OrderAddress = {
 }
 
 export type CustomerRegisteredEventPayload = {
-  full_name: string,
-  email: string
+  customer_id?: string;
+  full_name: string;
+  email: string;
 }

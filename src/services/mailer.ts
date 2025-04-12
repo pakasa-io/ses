@@ -2,7 +2,6 @@ import {injectable} from "@/di";
 import {isEmpty} from "lodash";
 import {SendEmailCommand, SESClient} from "@aws-sdk/client-ses";
 
-
 export type SendEmailRequest = {
   from: string;
   to: string[];
