@@ -9,3 +9,5 @@ export abstract class Logger {
 
   abstract debug(...msg: any): any
 }
+
+module.exports = Logger
