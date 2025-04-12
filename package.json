@@ -27,7 +27,7 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch",
     "size": "bundlesize",
-    "lint": "/bin/true || eslint --ext .js,.ts --cache --cache-strategy content .",
+    "lint": "eslint --ext .js,.ts --cache --cache-strategy content .; /bin/true",
     "lint-fix": "eslint --ext .js,.ts --fix .",
     "prettier": "prettier --log-level warn --write --cache .",
     "prettier-check": "prettier --log-level warn --check --cache .",
