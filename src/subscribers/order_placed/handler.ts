@@ -90,3 +90,4 @@ async function handler(data: OrderPlacedEventPayload) {
 };
 
 module.exports = handler
+export default handler

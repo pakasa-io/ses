@@ -3,5 +3,3 @@ export enum TemplateId {
   ORDER_PLACED = 'order_placed',
   RESET_PASSWORD = 'reset_password'
 }
-
-module.exports.TemplateId = TemplateId

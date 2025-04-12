@@ -15,7 +15,3 @@ export class TemplateGlobals {
     return {...globals, data}
   }
 }
-
-module.exports = {
-  TemplateGlobals
-}

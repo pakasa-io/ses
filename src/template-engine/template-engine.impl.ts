@@ -94,5 +94,3 @@ export class TemplateEngineImpl implements TemplateEngine {
     return path.resolve(this.baseDir, lng, templateId, filename);
   }
 }
-
-module.exports = {TemplateEngineImpl}

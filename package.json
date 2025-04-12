@@ -20,7 +20,7 @@
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
     "prepare": "husky install",
-    "build": "yarn clean && tsc --noEmitOnError false; tsc-alias",
+    "build": "yarn clean && tsc --noEmitOnError false; tsc-alias; yarn hbs-compile",
     "verify": "node verify-package.js",
     "prepublishOnly": "yarn build && yarn verify",
     "dev": "yarn clean && tsc --noEmitOnError false; tsc-alias --watch",
@@ -30,7 +30,8 @@
     "lint": "/bin/true || eslint --ext .js,.ts --cache --cache-strategy content .",
     "lint-fix": "eslint --ext .js,.ts --fix .",
     "prettier": "prettier --log-level warn --write --cache .",
-    "prettier-check": "prettier --log-level warn --check --cache ."
+    "prettier-check": "prettier --log-level warn --check --cache .",
+    "hbs-compile": "cp -rf ./src/templates ./dist"
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",

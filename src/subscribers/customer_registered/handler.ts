@@ -50,3 +50,4 @@ async function handler(data: CustomerRegisteredEventPayload) {
 };
 
 module.exports = handler
+export default handler

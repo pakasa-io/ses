@@ -22,5 +22,3 @@ export const datauri = (egn: TemplateEngine, hbs: Handlebars, c: Container) => (
 
   return new hbs.SafeString(`data:${mimeType};base64,${base64String}`);
 };
-
-module.exports = { datauri, truncate }
