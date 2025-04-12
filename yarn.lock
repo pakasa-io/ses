@@ -3520,12 +3520,6 @@ __metadata:
     bundlesize: "npm:^0.18.2"
     config: "npm:^3.3.12"
     dotenv: "npm:^16.4.7"
-    esbuild: "npm:^0.25.2"
-    esbuild-plugin-alias: "npm:^0.2.1"
-    esbuild-plugin-alias-path: "npm:^2.0.2"
-    esbuild-plugin-path-alias: "npm:^1.0.7"
-    esbuild-plugin-tsconfig-paths: "npm:^1.0.1"
-    esbuild-ts-paths: "npm:^1.1.3"
     eslint: "npm:^9.24.0"
     eslint-config-prettier: "npm:^10.1.1"
     eslint-plugin-prettier: "npm:^5.2.6"
@@ -7236,55 +7230,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild-plugin-alias-path@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "esbuild-plugin-alias-path@npm:2.0.2"
-  dependencies:
-    find-up: "npm:5.0.0"
-    fs-extra: "npm:^10.1.0"
-    jsonfile: "npm:^6.1.0"
-  peerDependencies:
-    esbuild: ">= 0.14.0"
-  checksum: 10c0/e140cbd75397c3af54da77f58489c264cf154808cb85b7a804ff8dafe9d2b02970bc1599f9f9425188ae7d066a7de665e9ed174e442c1e628675c3f56e52b368
-  languageName: node
-  linkType: hard
-
-"esbuild-plugin-alias@npm:^0.2.1":
-  version: 0.2.1
-  resolution: "esbuild-plugin-alias@npm:0.2.1"
-  checksum: 10c0/a67bc6bc2744fc8637f7321f00c1f00e4fae86c182662421738ebfabf3ad344967b9c667185c6c34d9edd5b289807d34bfdceef94620e94e0a45683534af69e0
-  languageName: node
-  linkType: hard
-
-"esbuild-plugin-path-alias@npm:^1.0.7":
-  version: 1.0.7
-  resolution: "esbuild-plugin-path-alias@npm:1.0.7"
-  peerDependencies:
-    esbuild: "*"
-  checksum: 10c0/3f42c570f51de09cb120b3d22746cf1afcbaf9d540569e0815631467051b295dcc92cc55e75d5d2062746888f7512290a335f3482b1d2c247f4fbe6850f5d325
-  languageName: node
-  linkType: hard
-
-"esbuild-plugin-tsconfig-paths@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "esbuild-plugin-tsconfig-paths@npm:1.0.1"
-  dependencies:
-    tsconfig-paths: "npm:4.2.0"
-  checksum: 10c0/0308c4accffc4fbc3d68b89958b7c00751a6e12b18e37e332bd1dd771b428c546bffce702a55a4ee7c6b8ce63347f78608253449ec3d833543ae784dbf41d588
-  languageName: node
-  linkType: hard
-
-"esbuild-ts-paths@npm:^1.1.3":
-  version: 1.1.3
-  resolution: "esbuild-ts-paths@npm:1.1.3"
-  dependencies:
-    fast-glob: "npm:^3.2.11"
-    normalize-path: "npm:^3.0.0"
-  checksum: 10c0/fa6a025819c3bba602987c1a37286bf1ebcf7cb0f2b61e23de209972a4f0d8846edb10d007380a8a1e870e396b40794056bf9f69d3409d4fb529e8c46ebb5ba3
-  languageName: node
-  linkType: hard
-
-"esbuild@npm:^0.25.0, esbuild@npm:^0.25.2":
+"esbuild@npm:^0.25.0":
   version: 0.25.2
   resolution: "esbuild@npm:0.25.2"
   dependencies:
@@ -7707,7 +7653,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.11, fast-glob@npm:^3.2.9, fast-glob@npm:^3.3.2":
+"fast-glob@npm:^3.2.9, fast-glob@npm:^3.3.2":
   version: 3.3.3
   resolution: "fast-glob@npm:3.3.3"
   dependencies:
@@ -7849,16 +7795,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"find-up@npm:5.0.0, find-up@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "find-up@npm:5.0.0"
-  dependencies:
-    locate-path: "npm:^6.0.0"
-    path-exists: "npm:^4.0.0"
-  checksum: 10c0/062c5a83a9c02f53cdd6d175a37ecf8f87ea5bbff1fdfb828f04bfa021441bc7583e8ebc0872a4c1baab96221fb8a8a275a19809fb93fbc40bd69ec35634069a
-  languageName: node
-  linkType: hard
-
 "find-up@npm:^4.0.0":
   version: 4.1.0
   resolution: "find-up@npm:4.1.0"
@@ -7866,6 +7802,16 @@ __metadata:
     locate-path: "npm:^5.0.0"
     path-exists: "npm:^4.0.0"
   checksum: 10c0/0406ee89ebeefa2d507feb07ec366bebd8a6167ae74aa4e34fb4c4abd06cf782a3ce26ae4194d70706f72182841733f00551c209fe575cb00bd92104056e78c1
+  languageName: node
+  linkType: hard
+
+"find-up@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "find-up@npm:5.0.0"
+  dependencies:
+    locate-path: "npm:^6.0.0"
+    path-exists: "npm:^4.0.0"
+  checksum: 10c0/062c5a83a9c02f53cdd6d175a37ecf8f87ea5bbff1fdfb828f04bfa021441bc7583e8ebc0872a4c1baab96221fb8a8a275a19809fb93fbc40bd69ec35634069a
   languageName: node
   linkType: hard
 
@@ -7984,17 +7930,6 @@ __metadata:
   version: 1.0.0
   resolution: "fs-constants@npm:1.0.0"
   checksum: 10c0/a0cde99085f0872f4d244e83e03a46aa387b74f5a5af750896c6b05e9077fac00e9932fdf5aef84f2f16634cd473c63037d7a512576da7d5c2b9163d1909f3a8
-  languageName: node
-  linkType: hard
-
-"fs-extra@npm:^10.1.0":
-  version: 10.1.0
-  resolution: "fs-extra@npm:10.1.0"
-  dependencies:
-    graceful-fs: "npm:^4.2.0"
-    jsonfile: "npm:^6.0.1"
-    universalify: "npm:^2.0.0"
-  checksum: 10c0/5f579466e7109719d162a9249abbeffe7f426eb133ea486e020b89bc6d67a741134076bf439983f2eb79276ceaf6bd7b7c1e43c3fd67fe889863e69072fb0a5e
   languageName: node
   linkType: hard
 
@@ -9390,19 +9325,6 @@ __metadata:
     graceful-fs:
       optional: true
   checksum: 10c0/7dc94b628d57a66b71fb1b79510d460d662eb975b5f876d723f81549c2e9cd316d58a2ddf742b2b93a4fa6b17b2accaf1a738a0e2ea114bdfb13a32e5377e480
-  languageName: node
-  linkType: hard
-
-"jsonfile@npm:^6.0.1, jsonfile@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "jsonfile@npm:6.1.0"
-  dependencies:
-    graceful-fs: "npm:^4.1.6"
-    universalify: "npm:^2.0.0"
-  dependenciesMeta:
-    graceful-fs:
-      optional: true
-  checksum: 10c0/4f95b5e8a5622b1e9e8f33c96b7ef3158122f595998114d1e7f03985649ea99cb3cd99ce1ed1831ae94c8c8543ab45ebd044207612f31a56fd08462140e46865
   languageName: node
   linkType: hard
 
@@ -13424,7 +13346,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsconfig-paths@npm:4.2.0, tsconfig-paths@npm:^4.1.2":
+"tsconfig-paths@npm:^4.1.2":
   version: 4.2.0
   resolution: "tsconfig-paths@npm:4.2.0"
   dependencies:
@@ -13736,13 +13658,6 @@ __metadata:
   version: 0.1.2
   resolution: "universalify@npm:0.1.2"
   checksum: 10c0/e70e0339f6b36f34c9816f6bf9662372bd241714dc77508d231d08386d94f2c4aa1ba1318614f92015f40d45aae1b9075cd30bd490efbe39387b60a76ca3f045
-  languageName: node
-  linkType: hard
-
-"universalify@npm:^2.0.0":
-  version: 2.0.1
-  resolution: "universalify@npm:2.0.1"
-  checksum: 10c0/73e8ee3809041ca8b818efb141801a1004e3fc0002727f1531f4de613ea281b494a40909596dae4a042a4fb6cd385af5d4db2e137b1362e0e91384b828effd3a
   languageName: node
   linkType: hard
 
