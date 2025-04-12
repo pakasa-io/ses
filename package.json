@@ -1,7 +1,7 @@
 {
   "name": "@pakasa/ses",
-  "version": "0.0.1",
-  "--packageManager": "yarn@4.9.0",
+  "version": "0.0.2",
+  "packageManager": "yarn@4.9.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -15,21 +15,23 @@
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
-    "test": "/bin/true || vitest",
+    "clean": "rimraf dist/",
+    "test": "vitest run",
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
     "prepare": "husky install",
-    "build": "node esbuild.config.js",
+    "build": "yarn clean && tsc --noEmitOnError false; tsc-alias; yarn hbs-compile",
     "verify": "node verify-package.js",
     "prepublishOnly": "yarn build && yarn verify",
-    "dev": "node esbuild.config.js --watch",
+    "dev": "yarn clean && tsc --noEmitOnError false; tsc-alias --watch",
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch",
     "size": "bundlesize",
-    "lint": "/bin/true || eslint --ext .js,.ts --cache --cache-strategy content .",
+    "lint": "eslint --ext .js,.ts --cache --cache-strategy content .; /bin/true",
     "lint-fix": "eslint --ext .js,.ts --fix .",
     "prettier": "prettier --log-level warn --write --cache .",
-    "prettier-check": "prettier --log-level warn --check --cache ."
+    "prettier-check": "prettier --log-level warn --check --cache .",
+    "hbs-compile": "cp -rf ./src/templates ./dist"
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",
@@ -37,11 +39,12 @@
     "@eslint/markdown": "^6.3.0",
     "@nx/eslint": "20.7.2",
     "@nx/vite": "20.7.2",
+    "@types/config": "^3",
+    "@types/lodash": "^4",
     "@typescript-eslint/eslint-plugin": "^8.29.1",
     "@typescript-eslint/parser": "^8.29.1",
     "@vitest/coverage-v8": "^3.1.1",
     "bundlesize": "^0.18.2",
-    "esbuild": "^0.25.2",
     "eslint": "^9.24.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.6",
@@ -49,9 +52,22 @@
     "husky": "^8.0.0",
     "nx": "20.7.2",
     "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "tsc-alias": "^1.8.15",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.29.1",
+    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.1.1"
   },
-  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.782.0",
+    "@evershop/evershop": "^1.2.2",
+    "config": "^3.3.12",
+    "dotenv": "^16.4.7",
+    "handlebars": "^4.7.8",
+    "inversify": "7.0.0-alpha.5",
+    "lodash": "^4.17.21",
+    "mime-types": "^3.0.1",
+    "reflect-metadata": "^0.2.2"
+  }
 }

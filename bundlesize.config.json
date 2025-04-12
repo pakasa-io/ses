@@ -1,11 +1,7 @@
 {
   "files": [
     {
-      "path": "dist/index.js",
-      "maxSize": "10 kB"
-    },
-    {
-      "path": "dist/index.mjs",
+      "path": "dist/bootstrap.js",
       "maxSize": "10 kB"
     }
   ]
