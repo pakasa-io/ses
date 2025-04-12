@@ -15,12 +15,7 @@ jobs:
         with:
           node-version: 22
           cache: 'yarn'
-      - run: corepack enable
-      - run: yarn set version 4.9.0
-#      - name: Setup Latest Yarn
-#        uses: threeal/setup-yarn-action@v2.0.0
-#        with:
-#          version: 4.9.0
+      - run: corepack enable && yarn set version 4.9.0
       - run: yarn install
       - run: yarn lint
       - run: yarn test
@@ -36,12 +31,7 @@ jobs:
         with:
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
-      - run: corepack enable
-      - run: yarn set version 4.9.0
-#      - name: Setup Latest Yarn
-#        uses: threeal/setup-yarn-action@v2.0.0
-#        with:
-#          version: 4.9.0
+      - run: corepack enable && yarn set version 4.9.0
       - run: yarn install
       - run: yarn prepublishOnly
       - run: npm publish
