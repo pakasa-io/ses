@@ -24,8 +24,8 @@ export class TemplateEngineImpl implements TemplateEngine {
   protected compiled: Record<string, any> = {};
 
   constructor(
-    protected ccm: Ccm,
-    protected globals: TemplateGlobals,
+    @inject(Ccm) protected ccm: Ccm,
+    @inject(TemplateGlobals) protected globals: TemplateGlobals,
     @inject(DI_HBS) protected client: Handlebars
   ) {
     this.registerHelpers(helpers);
@@ -48,7 +48,7 @@ export class TemplateEngineImpl implements TemplateEngine {
 
   protected registerPartials(dir: string) {
     fs.readdirSync(dir, {withFileTypes: true}).forEach((lang) => {
-      if (lang.isFile()) return;
+      if (lang.isFile() || lang.name.startsWith("__")) return;
 
       const partialsDir = path.resolve(dir, lang.name, PARTIALS_DIR);
       fs.readdirSync(partialsDir, {withFileTypes: true})

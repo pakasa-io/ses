@@ -1,9 +1,9 @@
-import {injectable} from "@/di";
+import {injectable, inject} from "@/di";
 import {Ccm} from "@/ccm";
 
 @injectable()
 export class TemplateGlobals {
-  constructor(protected ccm: Ccm) {
+  constructor(@inject(Ccm) protected ccm: Ccm) {
   }
 
   populate(data: Record<string, any>): Record<string, any> {

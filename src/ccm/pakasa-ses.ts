@@ -1,23 +1,42 @@
-import {DI_CONFIG, injectable, inject} from "@/di";
+import { DI_CONFIG, inject, injectable } from '@/di';
 
-import {IConfig} from "config";
-import {NAMESPACE} from "@/constants";
-import {DomainEvent, DomainEventConfig} from "@/types";
+import { IConfig } from 'config';
+import { NAMESPACE } from '@/constants';
+import { DomainEvent, DomainEventConfig } from '@/types';
+import { Logger } from '@/logger';
 
 @injectable()
 export class PakasaSesConfigs {
-  constructor(@inject(DI_CONFIG) protected config: IConfig) {
+  constructor(
+    @inject(DI_CONFIG) protected config: IConfig,
+    @inject(Logger) protected logger: Logger,
+  ) {
   }
 
   get from(): string {
-    return this.config.get(`${NAMESPACE}.from`)
+    try {
+      return this.config.get(`${NAMESPACE}.from`);
+    } catch (e: any) {
+      this.logger.warn(e?.message || e);
+      return '';
+    }
   }
 
   get fromName(): string {
-    return this.config.get(`${NAMESPACE}.fromName`)
+    try {
+      return this.config.get(`${NAMESPACE}.fromName`);
+    } catch (e: any) {
+      this.logger.warn(e?.message || e);
+      return '';
+    }
   }
 
   get events(): Record<DomainEvent, DomainEventConfig> {
-    return this.config.get(`${NAMESPACE}.events`) ?? {}
+    try {
+      return this.config.get(`${NAMESPACE}.events`);
+    } catch (e: any) {
+      this.logger.warn(e?.message || e);
+      return {} as any;
+    }
   }
 }

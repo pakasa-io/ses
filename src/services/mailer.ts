@@ -1,6 +1,6 @@
-import {injectable} from "@/di";
-import {isEmpty} from "lodash";
-import {SendEmailCommand, SESClient} from "@aws-sdk/client-ses";
+import { inject, injectable } from '@/di';
+import { isEmpty } from 'lodash';
+import { SendEmailCommand, SESClient } from '@aws-sdk/client-ses';
 
 export type SendEmailRequest = {
   from: string;
@@ -12,17 +12,17 @@ export type SendEmailRequest = {
 
 @injectable()
 export class Mailer {
-  constructor(protected sesClient: SESClient) {
+  constructor(@inject(SESClient) protected sesClient: SESClient) {
   }
 
   async send(request: SendEmailRequest) {
-    await this.sesClient.send(this.createCommand(request))
+    await this.sesClient.send(this.createCommand(request));
   }
 
   protected createCommand(
-    request: SendEmailRequest
+    request: SendEmailRequest,
   ): SendEmailCommand {
-    const {html, text, to, subject, from} = request;
+    const { html, text, to, subject, from } = request;
 
     const params = {
       Destination: {
@@ -33,15 +33,15 @@ export class Mailer {
 
     if (!isEmpty(html))
       params.Message = {
-        Subject: {Data: subject},
-        Body: {Html: {Data: html}},
+        Subject: { Data: subject },
+        Body: { Html: { Data: html } },
       };
     else if (!isEmpty(text))
       params.Message = {
-        Subject: {Data: subject},
-        Body: {Text: {Data: text}},
+        Subject: { Data: subject },
+        Body: { Text: { Data: text } },
       };
 
-    return new SendEmailCommand(params)
+    return new SendEmailCommand(params);
   }
 }

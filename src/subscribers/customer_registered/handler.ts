@@ -4,7 +4,6 @@ import {select} from '@evershop/postgres-query-builder'; // todo: modularize
 import {Ccm} from "@/ccm";
 import {Mailer, SendEmailRequest} from "@/services/mailer";
 import {TemplateEngineImpl, TemplateId} from "@/template-engine";
-import {CustomerRegisteredEventPayload} from "./event-payload.type";
 import {Logger} from "@/logger";
 
 async function handler(data: CustomerRegisteredEventPayload) {
@@ -51,3 +50,11 @@ async function handler(data: CustomerRegisteredEventPayload) {
 
 module.exports = handler
 export default handler
+
+export type CustomerRegisteredEventPayload = {
+  customer_id?: string;
+  full_name: string;
+  email: string;
+}
+
+
