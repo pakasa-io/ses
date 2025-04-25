@@ -1,12 +1,14 @@
 {
   "name": "@pakasa/ses",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "packageManager": "yarn@4.9.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
+    "dist/**/__assets__",
+    "dist/**/__partials__",
     "!dist/**/*.test.*"
   ],
   "sideEffects": false,
