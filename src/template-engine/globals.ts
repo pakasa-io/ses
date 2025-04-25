@@ -1,5 +1,5 @@
-import {injectable, inject} from "@/di";
-import {Ccm} from "@/ccm";
+import { inject, injectable } from '@/di';
+import { Ccm } from '@/ccm';
 
 @injectable()
 export class TemplateGlobals {
@@ -9,9 +9,13 @@ export class TemplateGlobals {
   populate(data: Record<string, any>): Record<string, any> {
     // todo: dynamically resolve globals
     const globals = {
-      home_url: this.ccm.shop.homeUrl
+      store: {
+        name: this.ccm.shop.name,
+        phone: this.ccm.shop.phone,
+        url: this.ccm.shop.homeUrl,
+      },
     };
 
-    return {...globals, data}
+    return { ...globals, ...data };
   }
 }

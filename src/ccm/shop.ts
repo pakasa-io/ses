@@ -19,6 +19,24 @@ export class ShopConfigs {
     }
   }
 
+  get name(): string {
+    try {
+      return this.config.get(this.key('name'));
+    } catch (e: any) {
+      this.logger.warn(e?.message || e);
+      return 'Pakasa';
+    }
+  }
+
+  get phone(): string {
+    try {
+      return this.config.get(this.key('phone'));
+    } catch (e: any) {
+      this.logger.warn(e?.message || e);
+      return '';
+    }
+  }
+
   get language(): string | 'en'{
     try {
       return this.config.get(this.key('language'));

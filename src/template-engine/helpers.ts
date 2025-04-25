@@ -22,3 +22,10 @@ export const datauri = (egn: TemplateEngine, hbs: Handlebars, c: Container) => (
 
   return new hbs.SafeString(`data:${mimeType};base64,${base64String}`);
 };
+
+export const year = (_e: TemplateEngine, _h: Handlebars, _c: Container) => () => new Date().getFullYear()
+
+export const formatDate = (_e: TemplateEngine, _h: Handlebars, _c: Container) => (dateString)=> {
+  const date = new Date(dateString);
+  return date.toLocaleDateString() + ' at ' + date.toLocaleTimeString();
+}

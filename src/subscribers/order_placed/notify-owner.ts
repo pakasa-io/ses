@@ -8,12 +8,14 @@ import { Logger } from '@/logger';
 
 import { contries } from '@evershop/evershop/src/lib/locale/countries';
 import { provinces } from '@evershop/evershop/src/lib/locale/provinces';
+import { NAMESPACE } from '@/constants';
+
+const { getValue } = require('@evershop/evershop/src/lib/util/registry');
 
 async function handler(data: OrderPlacedEventPayload) {
   const logger = resolve(Logger);
 
   try {
-    logger.info(`OrderPlacedEventPayload`, data);
     const ccm = resolve(Ccm);
     const mailer = resolve(Mailer);
     const tpl = resolve(TemplateEngineImpl);
@@ -21,7 +23,7 @@ async function handler(data: OrderPlacedEventPayload) {
 
     if (!from) return;
 
-    const { enabled, subject } = ccm.pakasaSes.events?.order_placed;
+    const { enabled, subject, subscribers } = ccm.pakasaSes.events?.order_placed;
     if (!enabled) return;
 
     // Build the email data
@@ -35,51 +37,38 @@ async function handler(data: OrderPlacedEventPayload) {
       return;
     }
 
-    const emailData = order;
+    const payload = order;
     order.items = await select()
       .from('order_item')
       .where('order_item_order_id', '=', order.order_id)
       .execute(pool);
 
-    emailData.shipping_address = await select()
+    payload.shipping_address = await select()
       .from('order_address')
       .where('order_address_id', '=', order.shipping_address_id)
       .load(pool);
 
-    emailData.shipping_address.country_name =
-      contries.find((c: any) => c.code === emailData.shipping_address.country)
+    payload.shipping_address.country_name =
+      contries.find((c: any) => c.code === payload.shipping_address.country)
         ?.name || '';
 
-    emailData.shipping_address.province_name =
-      provinces.find((p: any) => p.code === emailData.shipping_address.province)
+    payload.shipping_address.province_name =
+      provinces.find((p: any) => p.code === payload.shipping_address.province)
         ?.name || '';
 
-    emailData.billing_address = await select()
-      .from('order_address')
-      .where('order_address_id', '=', order.billing_address_id)
-      .load(pool);
-
-    emailData.billing_address.country_name =
-      contries.find((c: any) => c.code === emailData.billing_address.country)
-        ?.name || '';
-
-    emailData.billing_address.province_name =
-      provinces.find((p: any) => p.code === emailData.billing_address.province)
-        ?.name || '';
-
-    // const finalEmailData = await getValue(
-    //   'sendgrid_order_confirmation_email_data',
-    //   emailData,
-    //   {}
-    // );
+    const $payload = await getValue(
+      `${NAMESPACE}_order_confirmation_email_data`,
+      payload,
+      {},
+    );
 
     const lang = ccm.shop.language;
-
+    let html = tpl.render(TemplateId.ORDER_PLACED, $payload, { lang, filename: 'owner.html' });
     const dto: SendEmailRequest = {
-      to: order.customer_email,
-      subject: subject || 'Order Confirmation',
+      to: subscribers as string[],
+      subject: 'New Order',
       from,
-      html: tpl.render(TemplateId.ORDER_PLACED, emailData, { lang }),
+      html,
     };
 
     await mailer.send(dto);
